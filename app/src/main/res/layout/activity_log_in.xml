@@ -74,6 +74,7 @@
             android:layout_margin="25dp"
             android:background="@drawable/button_background"
             android:layout_gravity="center"
+            android:onClick="logIn"
             android:text="Log In" />
 
         <ProgressBar

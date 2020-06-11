@@ -100,7 +100,8 @@
             android:layout_margin="15dp"
             android:background="@drawable/button_background"
             android:layout_gravity="center"
-            android:text="Sign Up" />
+            android:text="Sign Up"
+            android:onClick="signUp"/>
 
         <ProgressBar
             android:id="@+id/progbar"

@@ -16,7 +16,7 @@ public class StarterPage extends AppCompatActivity {
         setContentView(R.layout.activity_starter_page);
     }
 
-    public void login(View view){
+    public void logIn(View view){
         Intent Login = new Intent(this,LogIn.class);
         startActivity(Login);
     }
