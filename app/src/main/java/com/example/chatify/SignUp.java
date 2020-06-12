@@ -97,8 +97,6 @@ public class SignUp extends AppCompatActivity {
         }
         else{
             Toast.makeText(getApplicationContext(), "Passwords do not match, please enter correctly!", Toast.LENGTH_SHORT).show();
-            Log.i("password",password);
-            Log.i("password",cpassword);
 
 
         }
