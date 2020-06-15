@@ -11,6 +11,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -99,8 +103,18 @@ public class Home extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            //Log.i("Website content :",result);
-            weatherTextView.setText(result);
+
+            try {
+                JSONObject jsonObject = new JSONObject(result);
+                String temp = jsonObject.getString("main");
+                JSONObject jsonTemp = new JSONObject(temp);
+                String currentTemp = jsonTemp.getString("temp");
+                weatherTextView.setText(convertTemp(currentTemp));
+                Toast.makeText(getApplicationContext(), "Weather Updated Successfully!", Toast.LENGTH_SHORT).show();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
 
         }
     }
@@ -108,6 +122,19 @@ public class Home extends AppCompatActivity {
     public void weatherRefresh(View view){
         WeatherTask task = new WeatherTask();
         task.execute("http://api.openweathermap.org/data/2.5/weather?q=Lahore&appid=dc31b5af70b15eebcd73af4d546e1e1b");
+        //Toast.makeText(getApplicationContext(), "Refreshing Temperature...", Toast.LENGTH_SHORT).show();
+
+    }
+
+    public String convertTemp(String kelvin){
+
+        double kelvinDouble = Double.parseDouble(kelvin);
+        double celsius = kelvinDouble - 273.15;
+        int celsiusInt = (int) Math.round(celsius);
+        String temp = Integer.toString(celsiusInt);
+        temp = temp + "C";
+
+        return temp;
 
     }
 
