@@ -39,8 +39,6 @@ public class Home extends AppCompatActivity {
         textViewTime = (TextView)findViewById(R.id.textViewTime);
         weatherTextView = (TextView) findViewById(R.id.weatherTextView);
 
-       // currentTime = Calendar.getInstance().getTime();
-        //textViewTime.setText(currentTime.toString());
     }
 
     public void startTimeUpdater() {
@@ -122,7 +120,7 @@ public class Home extends AppCompatActivity {
     public void weatherRefresh(View view){
         WeatherTask task = new WeatherTask();
         task.execute("http://api.openweathermap.org/data/2.5/weather?q=Lahore&appid=dc31b5af70b15eebcd73af4d546e1e1b");
-        //Toast.makeText(getApplicationContext(), "Refreshing Temperature...", Toast.LENGTH_SHORT).show();
+
 
     }
 
